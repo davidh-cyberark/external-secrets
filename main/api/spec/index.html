@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../pictures/eso-round-logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
     
     
       
@@ -730,6 +730,8 @@
       
         
       
+        
+      
     
     
       
@@ -842,6 +844,28 @@
   
   <span class="md-ellipsis">
     ClusterExternalSecret
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clusterpushsecret/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ClusterPushSecret
     
   </span>
   
@@ -2172,6 +2196,8 @@
       
         
       
+        
+      
     
     
       
@@ -2328,6 +2354,28 @@
   
   <span class="md-ellipsis">
     Chef
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../provider/cloudru/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cloud.ru Secret Manager
     
   </span>
   
@@ -5122,6 +5170,83 @@ Can only be defined when used in a ClusterSecretStore.</p>
 <td></td>
 </tr></tbody>
 </table>
+<h3 id="external-secrets.io/v1beta1.CSMAuth">CSMAuth
+</h3>
+<p>
+(<em>Appears on:</em>
+<a href="#external-secrets.io/v1beta1.CloudruSMProvider">CloudruSMProvider</a>)
+</p>
+<p>
+<p>CSMAuth contains a secretRef for credentials.</p>
+</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>secretRef</code></br>
+<em>
+<a href="#external-secrets.io/v1beta1.CSMAuthSecretRef">
+CSMAuthSecretRef
+</a>
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="external-secrets.io/v1beta1.CSMAuthSecretRef">CSMAuthSecretRef
+</h3>
+<p>
+(<em>Appears on:</em>
+<a href="#external-secrets.io/v1beta1.CSMAuth">CSMAuth</a>)
+</p>
+<p>
+<p>CSMAuthSecretRef holds secret references for Cloud.ru credentials.</p>
+</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>accessKeyIDSecretRef</code></br>
+<em>
+<a href="https://pkg.go.dev/github.com/external-secrets/external-secrets/apis/meta/v1#SecretKeySelector">
+External Secrets meta/v1.SecretKeySelector
+</a>
+</em>
+</td>
+<td>
+<p>The AccessKeyID is used for authentication</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>accessKeySecretSecretRef</code></br>
+<em>
+<a href="https://pkg.go.dev/github.com/external-secrets/external-secrets/apis/meta/v1#SecretKeySelector">
+External Secrets meta/v1.SecretKeySelector
+</a>
+</em>
+</td>
+<td>
+<p>The AccessKeySecret is used for authentication</p>
+</td>
+</tr>
+</tbody>
+</table>
 <h3 id="external-secrets.io/v1beta1.CertAuth">CertAuth
 </h3>
 <p>
@@ -5281,6 +5406,48 @@ string
 </tr>
 </tbody>
 </table>
+<h3 id="external-secrets.io/v1beta1.CloudruSMProvider">CloudruSMProvider
+</h3>
+<p>
+(<em>Appears on:</em>
+<a href="#external-secrets.io/v1beta1.SecretStoreProvider">SecretStoreProvider</a>)
+</p>
+<p>
+<p>CloudruSMProvider configures a store to sync secrets using the Cloud.ru Secret Manager provider.</p>
+</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>auth</code></br>
+<em>
+<a href="#external-secrets.io/v1beta1.CSMAuth">
+CSMAuth
+</a>
+</em>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<code>projectID</code></br>
+<em>
+string
+</em>
+</td>
+<td>
+<p>ProjectID is the project, which the secrets are stored in.</p>
+</td>
+</tr>
+</tbody>
+</table>
 <h3 id="external-secrets.io/v1beta1.ClusterExternalSecret">ClusterExternalSecret
 </h3>
 <p>
@@ -5399,7 +5566,8 @@ Deprecated: Use NamespaceSelectors instead.</p>
 </td>
 <td>
 <em>(Optional)</em>
-<p>Choose namespaces by name. This field is ORed with anything that NamespaceSelectors ends up choosing.</p>
+<p>Choose namespaces by name. This field is ORed with anything that NamespaceSelectors ends up choosing.
+Deprecated: Use NamespaceSelectors instead.</p>
 </td>
 </tr>
 <tr>
@@ -5588,7 +5756,8 @@ Deprecated: Use NamespaceSelectors instead.</p>
 </td>
 <td>
 <em>(Optional)</em>
-<p>Choose namespaces by name. This field is ORed with anything that NamespaceSelectors ends up choosing.</p>
+<p>Choose namespaces by name. This field is ORed with anything that NamespaceSelectors ends up choosing.
+Deprecated: Use NamespaceSelectors instead.</p>
 </td>
 </tr>
 <tr>
@@ -8735,6 +8904,7 @@ MachineIdentityScopeInWorkspace
 </em>
 </td>
 <td>
+<p>SecretsScope defines the scope of the secrets within the workspace</p>
 </td>
 </tr>
 <tr>
@@ -8746,6 +8916,7 @@ string
 </td>
 <td>
 <em>(Optional)</em>
+<p>HostAPI specifies the base URL of the Infisical API. If not provided, it defaults to &ldquo;<a href="https://app.infisical.com/api&quot;">https://app.infisical.com/api&rdquo;</a>.</p>
 </td>
 </tr>
 </tbody>
@@ -9005,6 +9176,7 @@ string
 </td>
 <td>
 <em>(Optional)</em>
+<p>SecretsPath specifies the path to the secrets within the workspace. Defaults to &ldquo;/&rdquo; if not provided.</p>
 </td>
 </tr>
 <tr>
@@ -9016,6 +9188,7 @@ bool
 </td>
 <td>
 <em>(Optional)</em>
+<p>Recursive indicates whether the secrets should be fetched recursively. Defaults to false if not provided.</p>
 </td>
 </tr>
 <tr>
@@ -9026,6 +9199,7 @@ string
 </em>
 </td>
 <td>
+<p>EnvironmentSlug is the required slug identifier for the environment.</p>
 </td>
 </tr>
 <tr>
@@ -9036,6 +9210,19 @@ string
 </em>
 </td>
 <td>
+<p>ProjectSlug is the required slug identifier for the project.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>expandSecretReferences</code></br>
+<em>
+bool
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>ExpandSecretReferences indicates whether secret references should be expanded. Defaults to true if not provided.</p>
 </td>
 </tr>
 </tbody>
@@ -10830,6 +11017,20 @@ BeyondtrustProvider
 <td>
 <em>(Optional)</em>
 <p>Beyondtrust configures this store to sync secrets using Password Safe provider.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>cloudrusm</code></br>
+<em>
+<a href="#external-secrets.io/v1beta1.CloudruSMProvider">
+CloudruSMProvider
+</a>
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>CloudruSM configures this store to sync secrets using the Cloud.ru Secret Manager provider</p>
 </td>
 </tr>
 </tbody>
@@ -13478,8 +13679,8 @@ Generated with <code>gen-crd-api-reference-docs</code>.
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      &copy; 2024 The external-secrets Authors.<br/>
-&copy; 2024 The Linux Foundation. All rights reserved.<br/><br/>
+      &copy; 2025 The external-secrets Authors.<br/>
+&copy; 2025 The Linux Foundation. All rights reserved.<br/><br/>
 The Linux Foundation has registered trademarks and uses trademarks.<br/>
 For a list of trademarks of The Linux Foundation, please see our <a href="https://www.linuxfoundation.org/trademark-usage/">Trademark Usage page</a>.
 
